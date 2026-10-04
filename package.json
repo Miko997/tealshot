@@ -1,0 +1,13 @@
+{
+  "name": "tealshot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "GNOME 50 select-first delayed screenshot extension",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "test": "node --experimental-vm-modules --test tests/*.test.mjs",
+    "check": "node --check extension/extension.js && node --check extension/prefs.js && node --check extension/core.js"
+  },
+  "engines": {"node": ">=20"}
+}

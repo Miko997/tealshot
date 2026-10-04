@@ -1,0 +1,190 @@
+
+> tealshot@0.1.0 test
+> node --experimental-vm-modules --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: reversed drag is normalized
+ok 1 - reversed drag is normalized
+  ---
+  duration_ms: 2.378145
+  type: 'test'
+  ...
+# Subtest: fractional logical coordinates round outward, without rescaling
+ok 2 - fractional logical coordinates round outward, without rescaling
+  ---
+  duration_ms: 0.339054
+  type: 'test'
+  ...
+# Subtest: selection is clamped to desktop bounds
+ok 3 - selection is clamped to desktop bounds
+  ---
+  duration_ms: 0.329567
+  type: 'test'
+  ...
+# Subtest: zero and tiny regions are rejected
+ok 4 - zero and tiny regions are rejected
+  ---
+  duration_ms: 0.31162
+  type: 'test'
+  ...
+# Subtest: invalid geometry is rejected
+ok 5 - invalid geometry is rejected
+  ---
+  duration_ms: 0.423142
+  type: 'test'
+  ...
+# Subtest: colors cannot inject CSS
+ok 6 - colors cannot inject CSS
+  ---
+  duration_ms: 0.267353
+  type: 'test'
+  ...
+# Subtest: timer uses elapsed time and does not drift with tick count
+ok 7 - timer uses elapsed time and does not drift with tick count
+  ---
+  duration_ms: 0.204193
+  type: 'test'
+  ...
+# Subtest: countdown HUD uses the monitor with greatest area overlap
+ok 8 - countdown HUD uses the monitor with greatest area overlap
+  ---
+  duration_ms: 0.293162
+  type: 'test'
+  ...
+# Subtest: only PNG byte signatures pass clipboard guard
+ok 9 - only PNG byte signatures pass clipboard guard
+  ---
+  duration_ms: 0.422653
+  type: 'test'
+  ...
+# (node:1106) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: enable does not capture anything
+ok 10 - enable does not capture anything
+  ---
+  duration_ms: 9.106394
+  type: 'test'
+  ...
+# Subtest: time starts on release, not shortcut or drag start
+ok 11 - time starts on release, not shortcut or drag start
+  ---
+  duration_ms: 10.767951
+  type: 'test'
+  ...
+# Subtest: countdown is non-modal and every overlay actor is click-through
+ok 12 - countdown is non-modal and every overlay actor is click-through
+  ---
+  duration_ms: 5.514422
+  type: 'test'
+  ...
+# Subtest: overlays and modal grab are gone before the fresh capture
+ok 13 - overlays and modal grab are gone before the fresh capture
+  ---
+  duration_ms: 6.121506
+  type: 'test'
+  ...
+# Subtest: same shortcut cancels countdown without touching clipboard
+ok 14 - same shortcut cancels countdown without touching clipboard
+  ---
+  duration_ms: 5.16532
+  type: 'test'
+  ...
+# Subtest: Escape releases selection and modal
+ok 15 - Escape releases selection and modal
+  ---
+  duration_ms: 3.152814
+  type: 'test'
+  ...
+# Subtest: tiny selection keeps selection active, without starting timer
+ok 16 - tiny selection keeps selection active, without starting timer
+  ---
+  duration_ms: 3.77603
+  type: 'test'
+  ...
+# Subtest: disabling while selecting leaves no grab or actors
+ok 17 - disabling while selecting leaves no grab or actors
+  ---
+  duration_ms: 2.984603
+  type: 'test'
+  ...
+# Subtest: disabling during a native capture prevents late clipboard replacement
+ok 18 - disabling during a native capture prevents late clipboard replacement
+  ---
+  duration_ms: 5.384734
+  type: 'test'
+  ...
+# Subtest: disable and re-enable cannot resurrect an earlier capture
+ok 19 - disable and re-enable cannot resurrect an earlier capture
+  ---
+  duration_ms: 5.465627
+  type: 'test'
+  ...
+# Subtest: monitor change cancels pending capture
+ok 20 - monitor change cancels pending capture
+  ---
+  duration_ms: 5.148777
+  type: 'test'
+  ...
+# Subtest: screen lock cancels pending capture
+ok 21 - screen lock cancels pending capture
+  ---
+  duration_ms: 3.420353
+  type: 'test'
+  ...
+# Subtest: capture completion during lock never copies
+ok 22 - capture completion during lock never copies
+  ---
+  duration_ms: 3.86123
+  type: 'test'
+  ...
+# Subtest: native capture failure produces a message and clears overlay
+ok 23 - native capture failure produces a message and clears overlay
+  ---
+  duration_ms: 6.318177
+  type: 'test'
+  ...
+# Subtest: invalid image bytes are not copied
+ok 24 - invalid image bytes are not copied
+  ---
+  duration_ms: 3.664737
+  type: 'test'
+  ...
+# Subtest: watchdog clears UI and late capture cannot overwrite clipboard
+ok 25 - watchdog clears UI and late capture cannot overwrite clipboard
+  ---
+  duration_ms: 8.779492
+  type: 'test'
+  ...
+# Subtest: key autorepeat does not cancel immediately
+ok 26 - key autorepeat does not cancel immediately
+  ---
+  duration_ms: 3.711896
+  type: 'test'
+  ...
+# Subtest: configured duration and color are snapshotted for each new selection
+ok 27 - configured duration and color are snapshotted for each new selection
+  ---
+  duration_ms: 4.852762
+  type: 'test'
+  ...
+# Subtest: no confirmation setting leaves no actors after capture
+ok 28 - no confirmation setting leaves no actors after capture
+  ---
+  duration_ms: 4.299277
+  type: 'test'
+  ...
+# Subtest: synchronous native exception closes stream and clears capture guard
+ok 29 - synchronous native exception closes stream and clears capture guard
+  ---
+  duration_ms: 4.05939
+  type: 'test'
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 29
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 169.986702

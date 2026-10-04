@@ -1,0 +1,14 @@
+test_default_has_no_unsolicited_shortcut (test_installer.InstallerTests.test_default_has_no_unsolicited_shortcut) ... ok
+test_does_not_touch_clipboard_binding (test_installer.InstallerTests.test_does_not_touch_clipboard_binding) ... ok
+test_legacy_capture_can_be_backed_up (test_installer.InstallerTests.test_legacy_capture_can_be_backed_up) ... ok
+test_metadata_and_schema_match (test_installer.InstallerTests.test_metadata_and_schema_match) ... ok
+test_no_false_flameshot_prefix_match (test_installer.InstallerTests.test_no_false_flameshot_prefix_match) ... ok
+test_normalizes_aliases_and_order (test_installer.InstallerTests.test_normalizes_aliases_and_order) ... ok
+test_restore_only_when_binding_and_command_untouched (test_installer.InstallerTests.test_restore_only_when_binding_and_command_untouched) ... ok
+test_timer_default_five_and_range (test_installer.InstallerTests.test_timer_default_five_and_range) ... ok
+test_unrelated_command_is_not_overwritten (test_installer.InstallerTests.test_unrelated_command_is_not_overwritten) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+OK

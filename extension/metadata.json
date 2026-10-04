@@ -1,0 +1,10 @@
+{
+  "uuid": "tealshot@miko.local",
+  "name": "Tealshot",
+  "description": "Select an area, release the mouse, prepare during a configurable countdown, then copy a fresh screenshot. Clipboard access: writes your explicitly requested screenshot as image/png to the system clipboard. No clipboard reading, disk image history, network access or background capture. Local development build targeting GNOME Shell 50.",
+  "shell-version": ["50"],
+  "version": 1,
+  "version-name": "0.1.0",
+  "settings-schema": "org.gnome.shell.extensions.tealshot",
+  "session-modes": ["user"]
+}

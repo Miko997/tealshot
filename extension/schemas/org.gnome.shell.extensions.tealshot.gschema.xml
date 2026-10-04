@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.tealshot" path="/org/gnome/shell/extensions/tealshot/">
+    <key name="tealshot-capture" type="as">
+      <default>[]</default>
+      <summary>Start or cancel capture</summary>
+      <description>User-configured shortcut. The local installer sets Ctrl+Super+S after asking for confirmation.</description>
+    </key>
+    <key name="delay-seconds" type="i">
+      <range min="1" max="60"/>
+      <default>5</default>
+      <summary>Countdown after releasing the selection</summary>
+    </key>
+    <key name="outline-color" type="s">
+      <default>'#23C9E8'</default>
+      <summary>Outline and countdown accent as #RRGGBB</summary>
+    </key>
+    <key name="outline-width" type="i">
+      <range min="1" max="6"/>
+      <default>2</default>
+      <summary>Outline width in logical pixels</summary>
+    </key>
+    <key name="glow" type="b">
+      <default>true</default>
+      <summary>Subtle glow around the selection</summary>
+    </key>
+    <key name="show-confirmation" type="b">
+      <default>true</default>
+      <summary>Show a short copied confirmation after capture</summary>
+    </key>
+  </schema>
+</schemalist>

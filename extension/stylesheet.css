@@ -1,0 +1,13 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+.tealshot-pill {
+    background-color: rgba(5, 13, 19, 0.96);
+    border-radius: 16px;
+    padding: 12px 18px;
+    spacing: 4px;
+    color: #e2f5f7;
+}
+.tealshot-kicker { font-size: 11px; font-weight: bold; color: #90b6c0; }
+.tealshot-time { font-size: 34px; font-weight: bold; }
+.tealshot-caption { font-size: 12px; color: #bad0d5; }
+.tealshot-track { height: 3px; background-color: rgba(125, 190, 204, 0.15); border-radius: 2px; }
+.tealshot-fill { height: 3px; border-radius: 2px; }

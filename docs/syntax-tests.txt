@@ -1,0 +1,4 @@
+
+> tealshot@0.1.0 check
+> node --check extension/extension.js && node --check extension/prefs.js && node --check extension/core.js
+
