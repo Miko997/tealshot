@@ -73,7 +73,7 @@ export default class TealshotPreferences extends ExtensionPreferences {
         });
 
         const look = new Adw.PreferencesGroup({title: 'Appearance',
-            description: 'The frame and timer are visible while preparing, then removed before capture. The overlay does not intercept your clicks during the countdown.'});
+            description: 'Only the countdown number and selection frame are shown. No background panel or success message. Both disappear before capture; your apps remain usable during the countdown.'});
         page.add(look);
         const colorRow = new Adw.ActionRow({title: 'Outline and timer color', subtitle: 'Default: cyan / teal #23C9E8'});
         const rgba = new Gdk.RGBA();
@@ -96,14 +96,11 @@ export default class TealshotPreferences extends ExtensionPreferences {
         const glow = new Adw.SwitchRow({title: 'Subtle cyan glow'});
         settings.bind('glow', glow, 'active', Gio.SettingsBindFlags.DEFAULT);
         look.add(glow);
-        const confirmation = new Adw.SwitchRow({title: 'Copied confirmation', subtitle: 'A short non-interactive message after capture'});
-        settings.bind('show-confirmation', confirmation, 'active', Gio.SettingsBindFlags.DEFAULT);
-        look.add(confirmation);
 
         const privacy = new Adw.PreferencesGroup({title: 'Clipboard and privacy',
             description: 'Tealshot writes image/png to the standard clipboard. Ctrl+V works in apps that accept pasted images. Clipboard Indicator can keep the image when its image-history feature is enabled and private mode is off. Tealshot does not read the clipboard, auto-paste, upload images, keep image history, or save captures to disk.'});
         page.add(privacy);
-        privacy.add(new Adw.ActionRow({title: 'Tealshot 0.1.0 · GNOME Shell 50',
+        privacy.add(new Adw.ActionRow({title: 'Tealshot 0.1.1 · GNOME Shell 50',
             subtitle: 'Local development build. Esc/right click cancels selection; the capture shortcut cancels the countdown.'}));
     }
 }

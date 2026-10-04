@@ -1,190 +1,246 @@
 
-> tealshot@0.1.0 test
+> tealshot@0.1.1 test
 > node --experimental-vm-modules --test tests/*.test.mjs
 
 TAP version 13
 # Subtest: reversed drag is normalized
 ok 1 - reversed drag is normalized
   ---
-  duration_ms: 2.378145
+  duration_ms: 1.975622
   type: 'test'
   ...
 # Subtest: fractional logical coordinates round outward, without rescaling
 ok 2 - fractional logical coordinates round outward, without rescaling
   ---
-  duration_ms: 0.339054
+  duration_ms: 0.12024
   type: 'test'
   ...
 # Subtest: selection is clamped to desktop bounds
 ok 3 - selection is clamped to desktop bounds
   ---
-  duration_ms: 0.329567
+  duration_ms: 0.147051
   type: 'test'
   ...
 # Subtest: zero and tiny regions are rejected
 ok 4 - zero and tiny regions are rejected
   ---
-  duration_ms: 0.31162
+  duration_ms: 0.162193
   type: 'test'
   ...
 # Subtest: invalid geometry is rejected
 ok 5 - invalid geometry is rejected
   ---
-  duration_ms: 0.423142
+  duration_ms: 0.245778
   type: 'test'
   ...
 # Subtest: colors cannot inject CSS
 ok 6 - colors cannot inject CSS
   ---
-  duration_ms: 0.267353
+  duration_ms: 0.234241
   type: 'test'
   ...
 # Subtest: timer uses elapsed time and does not drift with tick count
 ok 7 - timer uses elapsed time and does not drift with tick count
   ---
-  duration_ms: 0.204193
+  duration_ms: 0.13372
   type: 'test'
   ...
 # Subtest: countdown HUD uses the monitor with greatest area overlap
 ok 8 - countdown HUD uses the monitor with greatest area overlap
   ---
-  duration_ms: 0.293162
+  duration_ms: 0.255914
   type: 'test'
   ...
 # Subtest: only PNG byte signatures pass clipboard guard
 ok 9 - only PNG byte signatures pass clipboard guard
   ---
-  duration_ms: 0.422653
+  duration_ms: 0.278358
   type: 'test'
   ...
-# (node:1106) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+# (node:891) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
 # (Use `node --trace-warnings ...` to show where the warning was created)
 # Subtest: enable does not capture anything
 ok 10 - enable does not capture anything
   ---
-  duration_ms: 9.106394
+  duration_ms: 7.577033
   type: 'test'
   ...
 # Subtest: time starts on release, not shortcut or drag start
 ok 11 - time starts on release, not shortcut or drag start
   ---
-  duration_ms: 10.767951
+  duration_ms: 6.267379
   type: 'test'
   ...
 # Subtest: countdown is non-modal and every overlay actor is click-through
 ok 12 - countdown is non-modal and every overlay actor is click-through
   ---
-  duration_ms: 5.514422
+  duration_ms: 4.618306
   type: 'test'
   ...
 # Subtest: overlays and modal grab are gone before the fresh capture
 ok 13 - overlays and modal grab are gone before the fresh capture
   ---
-  duration_ms: 6.121506
+  duration_ms: 3.926659
   type: 'test'
   ...
 # Subtest: same shortcut cancels countdown without touching clipboard
 ok 14 - same shortcut cancels countdown without touching clipboard
   ---
-  duration_ms: 5.16532
+  duration_ms: 3.221922
   type: 'test'
   ...
 # Subtest: Escape releases selection and modal
 ok 15 - Escape releases selection and modal
   ---
-  duration_ms: 3.152814
+  duration_ms: 2.277015
   type: 'test'
   ...
 # Subtest: tiny selection keeps selection active, without starting timer
 ok 16 - tiny selection keeps selection active, without starting timer
   ---
-  duration_ms: 3.77603
+  duration_ms: 2.452698
   type: 'test'
   ...
 # Subtest: disabling while selecting leaves no grab or actors
 ok 17 - disabling while selecting leaves no grab or actors
   ---
-  duration_ms: 2.984603
+  duration_ms: 2.212007
   type: 'test'
   ...
 # Subtest: disabling during a native capture prevents late clipboard replacement
 ok 18 - disabling during a native capture prevents late clipboard replacement
   ---
-  duration_ms: 5.384734
+  duration_ms: 5.255962
   type: 'test'
   ...
 # Subtest: disable and re-enable cannot resurrect an earlier capture
 ok 19 - disable and re-enable cannot resurrect an earlier capture
   ---
-  duration_ms: 5.465627
+  duration_ms: 3.973469
   type: 'test'
   ...
 # Subtest: monitor change cancels pending capture
 ok 20 - monitor change cancels pending capture
   ---
-  duration_ms: 5.148777
+  duration_ms: 4.213509
   type: 'test'
   ...
 # Subtest: screen lock cancels pending capture
 ok 21 - screen lock cancels pending capture
   ---
-  duration_ms: 3.420353
+  duration_ms: 2.543034
   type: 'test'
   ...
 # Subtest: capture completion during lock never copies
 ok 22 - capture completion during lock never copies
   ---
-  duration_ms: 3.86123
+  duration_ms: 2.779808
   type: 'test'
   ...
 # Subtest: native capture failure produces a message and clears overlay
 ok 23 - native capture failure produces a message and clears overlay
   ---
-  duration_ms: 6.318177
+  duration_ms: 4.001711
   type: 'test'
   ...
 # Subtest: invalid image bytes are not copied
 ok 24 - invalid image bytes are not copied
   ---
-  duration_ms: 3.664737
+  duration_ms: 2.658326
   type: 'test'
   ...
 # Subtest: watchdog clears UI and late capture cannot overwrite clipboard
 ok 25 - watchdog clears UI and late capture cannot overwrite clipboard
   ---
-  duration_ms: 8.779492
+  duration_ms: 6.043443
   type: 'test'
   ...
 # Subtest: key autorepeat does not cancel immediately
 ok 26 - key autorepeat does not cancel immediately
   ---
-  duration_ms: 3.711896
+  duration_ms: 1.822343
   type: 'test'
   ...
 # Subtest: configured duration and color are snapshotted for each new selection
 ok 27 - configured duration and color are snapshotted for each new selection
   ---
-  duration_ms: 4.852762
+  duration_ms: 4.281461
   type: 'test'
   ...
 # Subtest: no confirmation setting leaves no actors after capture
 ok 28 - no confirmation setting leaves no actors after capture
   ---
-  duration_ms: 4.299277
+  duration_ms: 2.683044
   type: 'test'
   ...
 # Subtest: synchronous native exception closes stream and clears capture guard
 ok 29 - synchronous native exception closes stream and clears capture guard
   ---
-  duration_ms: 4.05939
+  duration_ms: 2.670174
   type: 'test'
   ...
-1..29
-# tests 29
+# (node:892) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: selection shows the unchanged frame, but no heading or instructions
+ok 30 - selection shows the unchanged frame, but no heading or instructions
+  ---
+  duration_ms: 8.003422
+  type: 'test'
+  ...
+# Subtest: countdown has exactly one numeric label and no title, caption or progress bar
+ok 31 - countdown has exactly one numeric label and no title, caption or progress bar
+  ---
+  duration_ms: 3.319348
+  type: 'test'
+  ...
+# Subtest: countdown reads 5 4 3 2 1 and disappears before capture; never shows zero
+ok 32 - countdown reads 5 4 3 2 1 and disappears before capture; never shows zero
+  ---
+  duration_ms: 7.605576
+  type: 'test'
+  ...
+# Subtest: old confirmation=true cannot bring back the successful-copy banner
+ok 33 - old confirmation=true cannot bring back the successful-copy banner
+  ---
+  duration_ms: 3.85447
+  type: 'test'
+  ...
+# Subtest: custom accent and duration are retained and digit transition stays centered
+ok 34 - custom accent and duration are retained and digit transition stays centered
+  ---
+  duration_ms: 3.329633
+  type: 'test'
+  ...
+# Subtest: counter is placed on the monitor containing the selected area
+ok 35 - counter is placed on the monitor containing the selected area
+  ---
+  duration_ms: 3.91428
+  type: 'test'
+  ...
+# Subtest: selection frame geometry and corner styling survive transition to countdown
+ok 36 - selection frame geometry and corner styling survive transition to countdown
+  ---
+  duration_ms: 3.258427
+  type: 'test'
+  ...
+# Subtest: minimal styles have no painted card and no leftover banner or progress selectors
+ok 37 - minimal styles have no painted card and no leftover banner or progress selectors
+  ---
+  duration_ms: 1.691937
+  type: 'test'
+  ...
+# Subtest: a successful minimal capture does not mutate saved preferences
+ok 38 - a successful minimal capture does not mutate saved preferences
+  ---
+  duration_ms: 3.210825
+  type: 'test'
+  ...
+1..38
+# tests 38
 # suites 0
-# pass 29
+# pass 38
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 169.986702
+# duration_ms 127.877609

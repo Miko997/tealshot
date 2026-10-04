@@ -1,4 +1,4 @@
-# Tealshot 0.1.0
+# Tealshot 0.1.1
 
 **Select an area → prepare during a visible countdown → paste the fresh screenshot.**
 
@@ -13,7 +13,7 @@ A small, local GNOME Shell **50 / Wayland** extension built for a dark cyan/teal
 5. At expiry, Tealshot removes its own overlays, allows about 100 ms for the overlay-free scene to render, and requests a **fresh** capture of the selected screen coordinates.
 6. The PNG is copied to the standard clipboard. Paste with **Ctrl+V** in an application that accepts images. There is no additional confirmation dialog or save step.
 
-The mouse pointer itself is excluded. Screenshots are not stored in Tealshot's files or uploaded. A brief “Copied · Ctrl+V” overlay appears only AFTER the capture and can be turned off.
+The mouse pointer itself is excluded. Screenshots are not stored in Tealshot's files or uploaded. The only text shown during normal capture is the countdown number. Selection has no instruction banner; the countdown has no background, branding or progress bar. Successful copying is silent. Failure messages remain visible.
 
 ## Install
 
@@ -21,8 +21,8 @@ Download the project ZIP to your Downloads directory, then:
 
 ```bash
 cd "$(xdg-user-dir DOWNLOAD)"
-unzip tealshot-0.1.0.zip
-cd tealshot-0.1.0
+unzip tealshot-0.1.1.zip
+cd tealshot-0.1.1
 bash install.sh
 ```
 
@@ -61,7 +61,7 @@ Settings:
 - **Outline and timer color:** default `#23C9E8`, chosen to complement the dark Metriplane wallpaper.
 - **Outline width:** 1–6 logical pixels; default 2, with brighter corner marks.
 - **Subtle cyan glow:** on/off.
-- **Copied confirmation:** on/off.
+The legacy `show-confirmation` preference is retained for compatibility but no longer displays a success message. Existing shortcuts, delay, outline color, width and glow settings are preserved.
 
 The timer is positioned on the display with the largest overlap with the selected rectangle. Screen coordinates are passed to GNOME's native API; the extension does not apply an arbitrary scale factor or resize your screenshot.
 
@@ -123,7 +123,7 @@ The uninstaller restores a backed-up old key only if its command has not changed
 extension/extension.js     Native selection, countdown, capture and cleanup
 extension/core.js          Pure geometry / timer / color / byte validation
 extension/prefs.js         GTK4 / libadwaita preferences
-extension/stylesheet.css  Small dark cyan overlay theme
+extension/stylesheet.css  Transparent number-only countdown styling
 extension/schemas/        GSettings configuration
 install.sh                User-only installer entrypoint
 uninstall.sh              Scoped removal / binding restoration

@@ -26,7 +26,8 @@
     </key>
     <key name="show-confirmation" type="b">
       <default>true</default>
-      <summary>Show a short copied confirmation after capture</summary>
+      <summary>Legacy confirmation preference (unused)</summary>
+      <description>Kept for settings compatibility. Since 0.1.1, successful captures are silent; only failures show a message.</description>
     </key>
   </schema>
 </schemalist>

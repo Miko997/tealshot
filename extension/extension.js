@@ -195,40 +195,22 @@ export default class Tealshot extends Extension {
         view.outline.show();
     }
 
-    _makePill(parent, monitor, title, number, caption, withProgress = false) {
-        const width = Math.min(280, monitor.width - 24);
+    _makeCountdown(parent, monitor, seconds) {
+        // One number only. Keep the allocation fixed so 10 -> 9 does not jump.
+        // This is not a panel: the container paints no background or border.
+        const width = Math.min(80, monitor.width - 24);
         const box = new St.BoxLayout({orientation: Clutter.Orientation.VERTICAL,
-            style_class: 'tealshot-pill', reactive: false, can_focus: false, width});
-        box.set_style(`border: 1px solid ${rgba(this._color, 0.6)};` +
-            (this._glow ? ` box-shadow: 0 3px 14px 0 ${rgba(this._color, 0.14)};` : ''));
-        const header = new St.Label({text: title, style_class: 'tealshot-kicker',
-            x_align: Clutter.ActorAlign.CENTER, reactive: false});
-        const value = new St.Label({text: number, style_class: 'tealshot-time',
-            x_align: Clutter.ActorAlign.CENTER, reactive: false});
+            style_class: 'tealshot-countdown', reactive: false, can_focus: false, width});
+        const value = new St.Label({text: `${seconds}`, style_class: 'tealshot-time',
+            x_align: Clutter.ActorAlign.CENTER, reactive: false, can_focus: false});
         value.set_style(`color: ${this._color};`);
-        const footer = new St.Label({text: caption, style_class: 'tealshot-caption',
-            x_align: Clutter.ActorAlign.CENTER, reactive: false});
-        box.add_child(header);
-        if (number)
-            box.add_child(value);
-        box.add_child(footer);
-        let fill = null;
-        const trackWidth = Math.max(1, width - 36);
-        if (withProgress) {
-            const track = new St.Widget({style_class: 'tealshot-track', width: trackWidth,
-                height: 3, reactive: false, layout_manager: new Clutter.FixedLayout()});
-            fill = new St.Widget({style_class: 'tealshot-fill', height: 3,
-                width: trackWidth, reactive: false});
-            fill.set_style(`background-color: ${this._color};`);
-            track.add_child(fill);
-            box.add_child(track);
-        }
+        box.add_child(value);
         const panelInset = monitor.index === Main.layoutManager.primaryIndex
             ? Math.max(28, Main.panel.height) : 12;
         box.set_position(Math.round(monitor.x + (monitor.width - width) / 2),
-            Math.round(monitor.y + panelInset + 14));
+            Math.round(monitor.y + panelInset + 10));
         parent.add_child(box);
-        return {box, value, footer, fill, trackWidth};
+        return {box, value};
     }
 
     _startSelection() {
@@ -248,7 +230,6 @@ export default class Tealshot extends Extension {
         const monitor = monitorForRectangle({x: px, y: py, width: 1, height: 1}, Main.layoutManager.monitors);
         if (!monitor)
             throw new Error('No active display');
-        this._makePill(root, monitor, 'TEALSHOT', '', 'Drag an area · Esc to cancel');
 
         const pan = new Clutter.PanGesture();
         this._pan = pan;
@@ -325,8 +306,7 @@ export default class Tealshot extends Extension {
         this._countdownRoot = root;
         this._placeOutline(this._makeOutline(root), rect);
         const monitor = monitorForRectangle(rect, Main.layoutManager.monitors);
-        this._pill = this._makePill(root, monitor, 'TEALSHOT · AREA READY',
-            `${this._delayMs / 1000}`, 'Use your apps · shortcut cancels', true);
+        this._counter = this._makeCountdown(root, monitor, this._delayMs / 1000);
         const deadline = releaseTime + this._delayMs;
         this._timeout(50, () => {
             if (token !== this._serial || !this._allowed()) {
@@ -338,8 +318,7 @@ export default class Tealshot extends Extension {
                 this._prepareCapture(token);
                 return false;
             }
-            this._pill.value.set_text(`${tick.seconds}`);
-            this._pill.fill.set_width(Math.max(1, Math.round(tick.progress * this._pill.trackWidth)));
+            this._counter.value.set_text(`${tick.seconds}`);
             // Keep the non-reactive guide above newly opened menus/windows.
             Main.uiGroup.set_child_above_sibling(root, null);
             return true;
@@ -351,7 +330,7 @@ export default class Tealshot extends Extension {
         const rect = {...this._rect};
         this._countdownRoot?.destroy();
         this._countdownRoot = null;
-        this._pill = null;
+        this._counter = null;
         // Let the compositor present the overlay-free scene before reading it.
         // No frozen screenshot is taken when selecting: this capture is fresh.
         this._timeout(100, () => {
@@ -389,8 +368,6 @@ export default class Tealshot extends Extension {
                 this._state = STATE.IDLE;
                 this._rect = null;
                 console.info(`[Tealshot] copied PNG (${rect.width} × ${rect.height} logical pixels)`);
-                if (this._settings.get_boolean('show-confirmation'))
-                    this._showCopied(rect);
             } catch (error) {
                 if (token === this._serial && this._enabled)
                     this._fail(error);
@@ -410,26 +387,12 @@ export default class Tealshot extends Extension {
         }
     }
 
-    _showCopied(rect) {
-        this._toastRoot?.destroy();
-        const root = this._makeRoot(false);
-        this._toastRoot = root;
-        const monitor = monitorForRectangle(rect, Main.layoutManager.monitors);
-        this._makePill(root, monitor, 'TEALSHOT', '', 'Copied · Ctrl+V');
-        this._timeout(900, () => {
-            root.destroy();
-            if (this._toastRoot === root)
-                this._toastRoot = null;
-        });
-    }
-
     _cancel() {
         this._serial = (this._serial ?? 0) + 1;
         this._clearSources();
         this._releaseSelection();
         this._countdownRoot?.destroy();
-        this._toastRoot?.destroy();
-        this._countdownRoot = this._toastRoot = this._pill = this._rect = null;
+        this._countdownRoot = this._counter = this._rect = null;
         this._state = STATE.IDLE;
     }
 }

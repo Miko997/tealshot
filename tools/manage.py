@@ -164,7 +164,7 @@ def main() -> int:
     if unknown:
         details = '\n'.join(f"  {x['name']}: {x['binding']}" for x in unknown)
         raise RuntimeError(f'An unrelated custom shortcut already uses this key. It will NOT be modified:\n{details}\nChange that binding in Settings, then rerun the installer.')
-    print(f'Tealshot 0.1.0 — {version}')
+    print(f'Tealshot 0.1.1 — {version}')
     print('Install locally:', dest)
     print('Shortcut:', ', '.join(desired), '(Super = Windows key)')
     print('Countdown: 5 seconds by default, starting AFTER selection.')

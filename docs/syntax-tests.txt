@@ -1,4 +1,9 @@
 
-> tealshot@0.1.0 check
+> tealshot@0.1.1 check
 > node --check extension/extension.js && node --check extension/prefs.js && node --check extension/core.js
 
+
+Bash syntax: install.sh / uninstall.sh / doctor.sh OK
+GSettings XML: well-formed (ElementTree).
+glib-compile-schemas unavailable in this build container. The installer compiles --strict on the target machine.
+No native GNOME/GJS runtime or compositor available; no on-screen rendering validation claimed.

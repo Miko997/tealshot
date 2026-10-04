@@ -1,39 +1,43 @@
-# Tealshot 0.1.0 — test report
+# Tealshot 0.1.1 test report
 
-Date: 2026-10-04.
+## Executed in the build container
 
-## Executed here
+- Node.js v22.16.0: **38/38 tests passed**.
+  - 9 core tests.
+  - 20 lifecycle tests using explicit GNOME API test doubles.
+  - 9 minimal-UI tests: one number only, no selection text, unchanged
+    frame/corners, transparent holder styling, correct countdown sequence,
+    silent success even with the old confirmation preference set, settings
+    preservation, positioning, and overlay cleanup.
+- Python unittest: **9/9 tests passed** (installer pure functions and metadata).
+- `node --check`: extension.js, prefs.js and core.js passed.
+- `bash -n`: install.sh, uninstall.sh and doctor.sh passed.
+- XML parsed successfully with ElementTree.
 
-- JavaScript syntax checks: `extension.js`, `prefs.js`, `core.js` — passed with Node.js 22.16.0.
-- Pure JavaScript geometry/timer/color/PNG tests — 9 passed.
-- Extension lifecycle tests with **GNOME API test doubles** — 20 passed.
-- Python installer/shortcut-preservation/schema tests — 9 passed.
-- Python bytecode syntax compilation — passed.
-- Bash syntax checks for install/uninstall/doctor launchers — passed.
-- GSettings schema compiled with `glib-compile-schemas --strict` — passed (GLib 2.84 tooling in this container).
+Total automated tests: **47 passed**. The complete outputs are in
+`js-tests.txt`, `python-tests.txt` and `syntax-tests.txt`.
 
-**Total: 38 automated test cases passed.**
+## Source checks
 
-## Important tested behavior
+The original extension.js, stylesheet.css and prefs.js in the supplied 0.1.0
+archive matched the Git blob hashes read from Miko997/tealshot main before
+editing. The outline construction and styling methods and modal-selection
+release method were checked byte-for-byte unchanged. The native capture
+method is unchanged except that the optional success-banner call is removed.
 
-- Selecting/holding a drag does not start a countdown or capture.
-- The timer is anchored to mouse release, not invocation.
-- Delayed ticks use a monotonic deadline rather than tick counting.
-- The modal input grab is released before countdown.
-- Countdown actors and their descendants are non-reactive in the tested construction.
-- Overlay actors are removed before invoking native capture.
-- A successful capture writes image/png once and closes the memory stream.
-- Repeated shortcuts cancel, without changing the old clipboard.
-- Escape, disable, monitor changes and lock cancel safely.
-- Late native callbacks after disable/lock/cancel cannot overwrite the clipboard.
-- Disable + re-enable does not revive a stale operation.
-- Native failure, invalid bytes, synchronous errors and a timeout do not leave overlay actors behind.
-- Old screenshot bindings are recognized narrowly; unrelated or subsequently modified bindings are not overwritten/restored.
+## Not executed
 
-## NOT executed here
+This container does not have a native GNOME Shell 50 / NVIDIA / Wayland
+session, GJS, or glib-compile-schemas. The installer compiles the schema
+strictly on the target Ubuntu system. Mocked lifecycle tests and static CSS
+checks do not prove the real font rendering, monitor scaling, clipboard
+integration, or compositing behavior.
 
-This container does **not** have a running GNOME Shell 50 / Mutter / Wayland session or the user's NVIDIA RTX 5070 Ti display stack.
+## Target-machine acceptance test
 
-Accordingly, this report does **not** certify native GJS module loading, real gesture delivery, actual click-through behavior, the live screenshot backend, GTK preference rendering, actual clipboard paste, Clipboard Indicator retention, GPU stability, HDR color behavior, or mixed-DPI multi-monitor behavior. Native acceptance steps are in README.md. The program was not installed or executed on the user's machine remotely.
-
-The test-double suite executes the extension's actual JavaScript control flow, but mocks the GNOME/Clutter/Gio native APIs. This is useful regression coverage, not an end-to-end desktop test.
+After installation, save work and log out/in once. Press Ctrl+Windows+S:
+select an area, verify no top instruction banner; release and verify only
+5,4,3,2,1 appears over the desktop with no box or progress bar. Check that
+the original cyan frame is unchanged and apps remain interactive. Paste the
+image; the timer/frame must not be captured and no success banner should
+appear. Change countdown/color in preferences and repeat.

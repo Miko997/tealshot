@@ -10,8 +10,8 @@ Tallenna ZIP Lataukset/Downloads-kansioon. Avaa terminaali:
 
 ```bash
 cd "$(xdg-user-dir DOWNLOAD)"
-unzip tealshot-0.1.0.zip
-cd tealshot-0.1.0
+unzip tealshot-0.1.1.zip
+cd tealshot-0.1.1
 bash install.sh
 ```
 
@@ -36,7 +36,7 @@ gnome-extensions prefs tealshot@miko.local
 - **Outline and timer color:** kehyksen väri, oletuksena hohtava turkoosinsininen `#23C9E8`.
 - **Outline width:** viivan paksuus.
 - **Subtle cyan glow:** hohto päälle/pois.
-- **Copied confirmation:** lyhyt kopiointikuittaus päälle/pois.
+Ylhäällä näkyy vain lähtölaskennan numero. Ei taustalaatikkoa, otsikoita, ohjetekstiä, aikapalkkia tai kopiointikuittausta. Virheilmoitus näkyy vain epäonnistumisen yhteydessä.
 
 ## Käyttö
 
